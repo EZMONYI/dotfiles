@@ -1,0 +1,53 @@
+Host yrb-ubuntu
+  HostName 143.89.224.1
+  User yrb
+  Port 8822
+  IdentityFile ~/.ssh/id_rsa
+
+Host clemson
+  HostName slogin.palmetto.clemson.edu
+  User gen
+  ServerAliveInterval 60
+  ServerAliveCountMax 120
+  ProxyCommand nc -x 127.0.0.1:7890 -X 5 %h %p
+
+Host slogin
+  HostName 10.33.4.51
+  User yi
+  Port 22
+  ProxyJump jumpserver47
+  IdentityFile ~/.ssh/hkust
+
+Host jumpserver47
+  HostName 143.89.224.47
+  User yi
+  IdentityFile ~/.ssh/hkust
+  ServerAliveInterval 60
+  ServerAliveCountMax 120
+  ProxyCommand nc -x 127.0.0.1:7890 -X 5 %h %p
+
+Host maclab-s003
+  HostName 143.89.224.10
+  User yi
+  Port 22
+  Proxyjump jumpserver47
+  IdentityFile ~/.ssh/hkust
+
+Host dgx-034
+  HostName 10.33.4.140
+  User yi
+  Port 22
+  ProxyJump slogin
+  IdentityFile ~/.ssh/hkust
+
+Host dgx-043
+  HostName 10.33.4.149
+  User yi
+  Port 22
+  ProxyJump slogin
+  IdentityFile ~/.ssh/hkust
+
+Host 4090-audio
+  HostName 143.89.224.2
+  User yi
+  IdentityFile ~/.ssh/hkust
