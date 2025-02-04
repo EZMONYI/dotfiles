@@ -11,7 +11,7 @@ Host clemson
   ServerAliveCountMax 120
   ProxyCommand nc -x 127.0.0.1:7890 -X 5 %h %p
 
-Host slogin
+Host hkust
   HostName 10.33.4.51
   User yi
   Port 22
@@ -33,21 +33,28 @@ Host maclab-s003
   Proxyjump jumpserver47
   IdentityFile ~/.ssh/hkust
 
+Host maclab-s004
+  HostName 143.89.224.12
+  User yi
+  Port 22
+  Proxyjump jumpserver47
+  IdentityFile ~/.ssh/hkust
+
 Host dgx-034
   HostName 10.33.4.140
   User yi
   Port 22
-  ProxyJump slogin
+  ProxyJump hkust
   IdentityFile ~/.ssh/hkust
 
 Host dgx-043
   HostName 10.33.4.149
   User yi
   Port 22
-  ProxyJump slogin
+  ProxyJump hkust
   IdentityFile ~/.ssh/hkust
 
-Host 4090-audio
+Host maclab-audio
   HostName 143.89.224.2
   User yi
   IdentityFile ~/.ssh/hkust
